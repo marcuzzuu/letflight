@@ -17,9 +17,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Service
 public class GeoService
 {
-    @Value("ip-registry.api.key")
+    @Value("${ip-registry.api.key}")
     private String apiKey;
-    @Value("ip-registry.url")
+    @Value("${ip-registry.url}")
     private String apiUrl;
     
     @Autowired

@@ -16,11 +16,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 @NoArgsConstructor
 public class MapsService
 {
-    @Value("google.api.url")
+    @Value("${google.api.url}")
     private String url;
-    @Value("google.api.research.researchRadius")
+    @Value("${google.api.research.radius}")
     private Integer researchRadius;
-    @Value("google.api.key")
+    @Value("${google.api.key}")
     private String apiKey;
     
     @Autowired
