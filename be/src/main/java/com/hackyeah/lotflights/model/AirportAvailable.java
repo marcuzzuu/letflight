@@ -1,23 +1,22 @@
 package com.hackyeah.lotflights.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 
-@Getter
-@Setter
-@ToString
-public class AirportAvailable {
-
-
+@NoArgsConstructor
+@Data
+@Builder
+public class AirportAvailable
+{
     private String airportName;
-
+    private String iata;
     private GeoJsonPoint geoJsonPoint;
-
-    public AirportAvailable(GeoJsonPoint geoJsonPoint, String airportName) {
-      this.geoJsonPoint=geoJsonPoint;
-      this.airportName=airportName;
+    
+    public AirportAvailable(GeoJsonPoint geoJsonPoint, String airportName)
+    {
+        this.geoJsonPoint = geoJsonPoint;
+        this.airportName = airportName;
     }
-
 }
