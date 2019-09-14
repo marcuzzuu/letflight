@@ -14,9 +14,14 @@ import { MatCardModule } from  '@angular/material/card';
 import { MatButtonModule } from  '@angular/material/button';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { DestinationsComponent } from './components/destinations/destinations.component';
+import { MapComponent } from './components/destinations/map/map.component';
+import { MarkerComponent } from './components/destionations/marker/marker.component';
 
 @NgModule({
-  declarations: [AppComponent, WelcomeComponent],
+  declarations: [AppComponent, WelcomeComponent, NavbarComponent, SideNavComponent, DestinationsComponent, MapComponent, MarkerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

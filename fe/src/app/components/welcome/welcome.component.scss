@@ -1,0 +1,20 @@
+@import '../../../assets/css/variables.scss';
+
+.mobile-container {
+    height: 100vh;
+    width: 100vw;
+
+    display: grid;
+    grid-template-rows: 1fr 4fr;
+}
+
+.options {
+    display: grid;
+    
+}
+
+@media (min-width: $mobile-treshold) {
+    .mobile-container {
+        display: none;
+    }
+}
