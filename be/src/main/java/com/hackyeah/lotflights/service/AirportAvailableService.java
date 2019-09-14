@@ -1,6 +1,6 @@
-package com.hackyeah.demo.service;
+package com.hackyeah.lotflights.service;
 
-import com.hackyeah.demo.model.Airport;
+import com.hackyeah.lotflights.model.Airport;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.hackyeah.demo.model;
+package com.hackyeah.lotflights.model;
 
 public class Airport {
 
