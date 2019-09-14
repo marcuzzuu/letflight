@@ -1,6 +1,7 @@
 package com.hackyeah.lotflights.service;
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.hackyeah.lotflights.model.Airport;
 import com.hackyeah.lotflights.model.GeoJsonPoint;
@@ -11,6 +12,8 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.Optional;
 
 @Service
 @NoArgsConstructor
@@ -26,7 +29,7 @@ public class MapsService
     @Autowired
     private RestTemplate client;
     
-    public Airport findNearAirport(final GeoJsonPoint location)
+    public Optional<Airport> findNearAirport(final GeoJsonPoint location)
     {
         if (location != null && location.getCoordinates() != null)
         {
@@ -36,7 +39,7 @@ public class MapsService
             final UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromHttpUrl(this.url);
             
             HttpEntity<String> entity = new HttpEntity<>(httpHeaders);
-            uriComponentsBuilder.queryParam("key").
+            uriComponentsBuilder.queryParam("key",this.apiKey).
               queryParam("inputtype", "textquery").
               queryParam("input", "airport").
               queryParam("language", "en").
@@ -48,9 +51,23 @@ public class MapsService
                 final String response = responseEntity.getBody();
                 final JsonParser parser = new JsonParser();
                 final JsonElement responseElement = parser.parse(response);
-                responseElement.getAsJsonObject();
+                if(responseElement!=null)
+                {
+                    try
+                    {
+                        final JsonObject airportObject = responseElement.getAsJsonObject().getAsJsonArray("candidates").get(0).getAsJsonObject();
+                        if(airportObject!=null)
+                        {
+                            final JsonObject airportLocationObject = airportObject.getAsJsonObject("location");
+                            return Optional.of(Airport.builder().name(airportObject.get("name").getAsString()).location(GeoJsonPoint.builder().x(airportLocationObject.get("lat").getAsDouble()).y(airportLocationObject.get("lng").getAsDouble()).build()).build());
+                        }
+                    }catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
-        return null;
+        return Optional.empty();
     }
 }

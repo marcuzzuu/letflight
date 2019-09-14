@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class FlightsController
@@ -48,7 +49,7 @@ public class FlightsController
     @ResponseBody
     public ResponseEntity<Airport> nearestDepartureAirport(@RequestParam final GeoJsonPoint location)
     {
-        final Airport nearestAirport = this.mapsService.findNearAirport(location);
-        return nearestAirport != null ? ResponseEntity.ok(nearestAirport) : ResponseEntity.ok(this.flightsService.getDefaultAirport());
+        final Optional<Airport> nearestAirport = this.mapsService.findNearAirport(location);
+        return nearestAirport != null ? ResponseEntity.ok(nearestAirport.get()) : ResponseEntity.ok(this.flightsService.getDefaultAirport());
     }
 }
