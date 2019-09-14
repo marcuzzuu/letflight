@@ -1,4 +1,4 @@
-package com.hackyeah.demo;
+package com.hackyeah.lotflights;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
