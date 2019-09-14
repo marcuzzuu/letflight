@@ -1,1 +1,15 @@
-<p>navbar works!</p>
+<div class="mobile-container">
+    <button mat-icon-button>
+        <mat-icon aria-hidden="false" aria-label="Example home icon">menu</mat-icon>
+    </button>
+</div>
+<div class="desktop-container">
+    <nav>
+        <div class="logo" (click)="onLogoClick()"></div>
+        <ul class="navigation-list">
+            <li>Book</li>
+            <li>Deals & Offers</li>
+            <li>Prepare for Travel</li>
+        </ul>
+    </nav>
+</div>

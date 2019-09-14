@@ -1,0 +1,70 @@
+@import '../../../assets/css/colors.scss';
+
+.additional-service-image {
+    height: 35vh;
+    width:  35vh;
+    color: $solid-color;
+    font-size: 1.5rem;
+    margin: 2rem;
+}
+
+.additional-service {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: $plain-color;
+    margin: 2rem 0;
+    padding: 1rem 0;
+}
+
+h1 {
+    font-size: 1.5rem;
+    color: $plain-color;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem;
+    background-color: $solid-color;
+}
+
+.luggage {
+    filter: brightness(0.7);
+    background-size: cover;
+    background-position: center;
+    background-image: url('../../../assets/anete-lusina-GOZxrAlNIt4-unsplash.jpg');
+}
+
+.car {
+    filter: brightness(0.7);
+    background-size: cover;
+    background-position: center;
+    background-image: url('../../../assets/bmw-918408_1920.jpg');
+}
+
+.seat {
+    filter: brightness(0.7);
+    background-size: cover;
+    background-position: center;
+    background-image: url('../../../assets/killian-pham-j0DrLBZH0nE-unsplash.jpg');
+}
+
+.service-name {
+    color: $solid-color;
+    text-align: center;
+    margin: 0.25rem;
+}
+
+mat-icon {
+    color: $solid-color;
+}
+
+.submitButton {
+    mat-icon {
+        color: $plain-color;
+    }
+}

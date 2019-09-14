@@ -1,0 +1,18 @@
+<div class="container">
+  <form [formGroup]="dateForm" #formGroup>
+    <mat-form-field>
+      <input formControlName="departure" matInput [matDatepicker]="departurePicker"
+        placeholder="Choose a departure date">
+      <mat-datepicker-toggle matSuffix [for]="departurePicker"></mat-datepicker-toggle>
+      <mat-datepicker #departurePicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="return" matInput [matDatepicker]="returnPicker" placeholder="Choose a return date">
+      <mat-datepicker-toggle matSuffix [for]="returnPicker"></mat-datepicker-toggle>
+      <mat-datepicker #returnPicker></mat-datepicker>
+    </mat-form-field>
+    <button mat-icon-button [disabled]="dateForm.invalid" (click)="onSubmit()">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_forward</mat-icon>
+    </button>
+  </form>
+</div>

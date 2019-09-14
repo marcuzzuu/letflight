@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Item, BackendService } from 'src/app/shared/backend.service';
+import { BackendService } from 'src/app/shared/backend.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -8,21 +9,18 @@ import { Item, BackendService } from 'src/app/shared/backend.service';
 })
 export class WelcomeComponent implements OnInit {
 
-  items: Array<Item>;
-  constructor(private apiService: BackendService) {}
-  ngOnInit() {
-    this.fetchData();
-  }
-  fetchData() {
-    this.apiService.fetch().subscribe(
-      (data: Array<Item>) => {
-        console.log(data);
-        this.items = data;
-      },
-      err => {
-        console.log(err);
+  options = ["destinations", "luggage information", "special offers", "option 4"];
+
+  onOptionSelect(option: string) {
+    switch(option.toLowerCase()) {
+      case "destinations": {
+        this.router.navigate(["destinations"]);
       }
-    );
+    }
   }
+
+  constructor(private apiService: BackendService, public router: Router) {}
+
+  ngOnInit() {}
 
 }

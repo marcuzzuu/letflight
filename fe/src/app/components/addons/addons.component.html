@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Additional services</h1>
+  <div class="additional-service" *ngFor="let service of services; let i = index">
+    <div class="additional-service-image" [ngClass]="service.style"></div>
+    <p class="service-name">{{service.name}}</p>
+    <button mat-icon-button (click)="onSwitch(i)">
+        <mat-icon *ngIf="selections[i]; else elseBlock" aria-hidden="false" aria-label="Example home icon">close</mat-icon>
+        <ng-template #elseBlock>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">check</mat-icon>
+        </ng-template>
+    </button>
+  </div>
+  <button class="submitButton" mat-icon-button (click)="onSubmit()">
+    <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_forward</mat-icon>
+  </button>
+</div>

@@ -18,10 +18,19 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { DestinationsComponent } from './components/destinations/destinations.component';
 import { MapComponent } from './components/destinations/map/map.component';
-import { MarkerComponent } from './components/destionations/marker/marker.component';
+import { MarkerComponent } from './components/destinations/map/marker/marker.component';
+
+import {MatIconModule} from '@angular/material/icon';
+import { DateComponent } from './components/date/date.component';
+
+import { ReactiveFormsModule } from '@angular/forms';
+
+import {MatDatepickerModule, MatInputModule,MatNativeDateModule} from '@angular/material';
+import { AddonsComponent } from './components/addons/addons.component';
+
 
 @NgModule({
-  declarations: [AppComponent, WelcomeComponent, NavbarComponent, SideNavComponent, DestinationsComponent, MapComponent, MarkerComponent],
+  declarations: [AppComponent, WelcomeComponent, NavbarComponent, SideNavComponent, DestinationsComponent, MapComponent, MarkerComponent, DateComponent, AddonsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,9 +39,13 @@ import { MarkerComponent } from './components/destionations/marker/marker.compon
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    MatDatepickerModule, MatInputModule,MatNativeDateModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [BackendService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [MarkerComponent]
 })
 export class AppModule {}

@@ -1,1 +1,27 @@
 <app-map></app-map>
+<div class="destination-help">
+  <div class="destination-help-pane destination-data">
+    <p class="help-message">We've picked your location as</p>
+    <span class="location">
+      <p class="location-string"><span class="location-prefix">from </span>{{departure}}</p>
+      <button class="change-button" mat-button>Change</button>
+    </span>
+    <div *ngIf="arrivalSelected; else elseBlock">
+      <p class="help-message">Select one of available destinations on the map</p>
+    </div>
+
+    <ng-template #elseBlock>
+      <span class="location">
+        <p class="location-string"><span class="location-prefix">to </span>{{arrival}}</p>
+      </span>
+    </ng-template>
+  </div>
+  <div class="destination-help-pane next">
+    <button mat-icon-button [disabled]="arrival === ''" (click)="onNext()">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_forward</mat-icon>
+    </button>
+  </div>
+
+
+
+</div>

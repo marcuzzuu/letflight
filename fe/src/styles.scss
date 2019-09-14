@@ -17,20 +17,27 @@ body {
 
 
 .marker {
-    background-image: url('./assets/mapbox-icon.png');
-    background-size: cover;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    border: 2px solid blue;
-  }
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  background-color: limegreen;
 
-  .marker-start {
-    background-image: url('./assets/mapbox-icon.png');
-    background-size: cover;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid red;
+  .temperature {
+    color: white;
   }
+}
+
+.marker-start {
+  @extend .marker;
+  background-color: crimson;
+  cursor: default;
+}
+
+.help-message {
+  text-align: center;
+}
+
+* {
+  box-sizing: content-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

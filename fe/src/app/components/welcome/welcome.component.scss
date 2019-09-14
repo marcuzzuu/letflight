@@ -1,20 +1,71 @@
 @import '../../../assets/css/variables.scss';
+@import '../../../assets/css/colors.scss';
 
 .mobile-container {
-    height: 100vh;
-    width: 100vw;
-
+    height: 100%;
     display: grid;
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: 3fr 6fr 1fr;
 }
 
-.options {
+.logo, footer {
+    width: 100%;
+    background: $plain-color;;
+}
+
+.buttons {
     display: grid;
-    
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    background-color: $solid-color;
+}
+
+.desktop-container {
+    display: none;
+}
+
+.hero-image {
+    background-image: url('../../../assets/plane-841441_1920.jpg');
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}
+
+
+button {
+    width: 30vw;
+    height: 2rem;
+    background-color: $plain-color;
+    color: $solid-color;
+    border: none;
+    padding: 0.5rem;
 }
 
 @media (min-width: $mobile-treshold) {
     .mobile-container {
         display: none;
+    }
+
+    .desktop-container {
+        display: grid;
+        grid-template-rows: 5fr 2fr;
+        height: 100%;
+    }
+
+    .buttons {
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    button {
+        width: 20vw;
+        height: 10vh;
+        background-color: $plain-color;
+        color: $solid-color;
+        border: none;
+        padding: 0.5rem;
     }
 }
