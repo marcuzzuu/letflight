@@ -25,7 +25,7 @@ public class IATAService
         if (geoJsonPoint != null)
         {
             UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromHttpUrl(this.apiUrl);
-            uriComponentsBuilder.path("getCode").path(geoJsonPoint.getX().toString()).path(geoJsonPoint.getY().toString());
+            uriComponentsBuilder.pathSegment("getCode", geoJsonPoint.getX().toString(), geoJsonPoint.getY().toString());
             final ResponseEntity<String> responseEntity = this.client.getForEntity(uriComponentsBuilder.toUriString(), String.class);
             if (responseEntity.getStatusCode() == HttpStatus.OK && !StringUtils.isEmpty(responseEntity.getBody()))
             {

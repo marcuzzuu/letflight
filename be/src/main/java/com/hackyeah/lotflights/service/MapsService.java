@@ -31,7 +31,7 @@ public class MapsService
     
     public Optional<Airport> findNearAirport(final GeoJsonPoint location)
     {
-        if (location != null && location.getCoordinates() != null)
+        if (location != null && location.getX() != null && location.getY()!=null)
         {
             final HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.set(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON.toString());
@@ -58,7 +58,7 @@ public class MapsService
                         final JsonObject airportObject = responseElement.getAsJsonObject().getAsJsonArray("candidates").get(0).getAsJsonObject();
                         if(airportObject!=null)
                         {
-                            final JsonObject airportLocationObject = airportObject.getAsJsonObject("location");
+                            final JsonObject airportLocationObject = airportObject.getAsJsonObject("geometry").getAsJsonObject("location");
                             return Optional.of(Airport.builder().name(airportObject.get("name").getAsString()).location(GeoJsonPoint.builder().x(airportLocationObject.get("lat").getAsDouble()).y(airportLocationObject.get("lng").getAsDouble()).build()).build());
                         }
                     }catch (Exception e)

@@ -16,9 +16,4 @@ public class GeoJsonPoint
 {
     private Double x;
     private Double y;
-    
-    public List<Double> getCoordinates()
-    {
-        return Arrays.asList(this.x, this.y);
-    }
 }
