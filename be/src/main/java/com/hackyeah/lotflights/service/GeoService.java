@@ -37,8 +37,8 @@ public class GeoService
                 final JsonElement response = parser.parse(responseEntity.getBody());
                 if (response.isJsonObject())
                 {
-                    final JsonObject responseObject = response.getAsJsonObject();
-                    return GeoJsonPoint.builder().x(responseObject.get("location.latitude").getAsDouble()).y(responseObject.get("location.longitude").getAsDouble()).build();
+                    final JsonObject responseLocation = response.getAsJsonObject().getAsJsonObject("location");
+                    return GeoJsonPoint.builder().x(responseLocation.get("latitude").getAsDouble()).y(responseLocation.get("longitude").getAsDouble()).build();
                 }
             }
         }
