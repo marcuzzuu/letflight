@@ -1,6 +1,5 @@
 package com.hackyeah.lotflights.controller;
 
-import com.hackyeah.demo.controller.AirportAvailable;
 import com.hackyeah.lotflights.model.Airport;
 import com.hackyeah.lotflights.service.AirportAvailableService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,8 @@ public class FlightsController
     
     @GetMapping("/airport-available")
     @ResponseBody
-    public Airport getAirports() {
+    public Airport getAirports()
+    {
         return null;
     }
 }
