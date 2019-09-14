@@ -12,6 +12,8 @@ import { BackendService } from "./shared/backend.service";
 import { MatToolbarModule } from  '@angular/material/toolbar';
 import { MatCardModule } from  '@angular/material/card';
 import { MatButtonModule } from  '@angular/material/button';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, WelcomeComponent],
@@ -22,7 +24,8 @@ import { MatButtonModule } from  '@angular/material/button';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [BackendService],
   bootstrap: [AppComponent]

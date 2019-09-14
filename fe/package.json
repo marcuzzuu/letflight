@@ -1,5 +1,5 @@
 {
-  "name": "lot-challenge-front",
+  "name": "fe",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prod": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -20,7 +21,10 @@
     "@angular/material": "^8.2.0",
     "@angular/platform-browser": "~8.0.1",
     "@angular/platform-browser-dynamic": "~8.0.1",
+    "@angular/pwa": "^0.803.4",
     "@angular/router": "~8.0.1",
+    "@angular/service-worker": "~8.0.1",
+    "hammerjs": "^2.0.8",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
