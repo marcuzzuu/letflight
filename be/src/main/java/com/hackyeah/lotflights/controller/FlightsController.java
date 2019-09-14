@@ -4,6 +4,7 @@ import com.hackyeah.lotflights.model.Airport;
 import com.hackyeah.lotflights.model.GeoJsonPoint;
 import com.hackyeah.lotflights.service.FlightsService;
 import com.hackyeah.lotflights.service.GeoService;
+import com.hackyeah.lotflights.service.IATAService;
 import com.hackyeah.lotflights.service.MapsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,8 @@ public class FlightsController
     private MapsService mapsService;
     @Autowired
     private GeoService geoService;
+    @Autowired
+    private IATAService iataService;
     
     @GetMapping("/airport-available")
     @ResponseBody
@@ -50,6 +53,12 @@ public class FlightsController
     public ResponseEntity<Airport> nearestDepartureAirport(@RequestParam final GeoJsonPoint location)
     {
         final Optional<Airport> nearestAirport = this.mapsService.findNearAirport(location);
-        return nearestAirport != null ? ResponseEntity.ok(nearestAirport.get()) : ResponseEntity.ok(this.flightsService.getDefaultAirport());
+        if(nearestAirport.isPresent())
+        {
+            final Airport airport = nearestAirport.get();
+            airport.setIata(this.iataService.getIataFromGeo(airport.getLocation()));
+            return ResponseEntity.ok(airport);
+        }
+        return ResponseEntity.notFound().build();
     }
 }
