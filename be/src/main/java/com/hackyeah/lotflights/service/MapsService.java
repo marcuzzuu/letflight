@@ -2,18 +2,15 @@ package com.hackyeah.lotflights.service;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.hackyeah.lotflights.model.AirportAvailable;
+import com.hackyeah.lotflights.model.Airport;
+import com.hackyeah.lotflights.model.GeoJsonPoint;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.util.Collections;
-import java.util.List;
 
 @Service
 @NoArgsConstructor
@@ -29,7 +26,7 @@ public class MapsService
     @Autowired
     private RestTemplate client;
     
-    public AirportAvailable findNearAirport(final GeoJsonPoint location)
+    public Airport findNearAirport(final GeoJsonPoint location)
     {
         if (location != null && location.getCoordinates() != null)
         {

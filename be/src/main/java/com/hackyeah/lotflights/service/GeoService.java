@@ -1,14 +1,12 @@
 package com.hackyeah.lotflights.service;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.hackyeah.lotflights.model.GeoJsonPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -29,19 +27,18 @@ public class GeoService
     
     public GeoJsonPoint getIpLocation(final String ipAddress)
     {
-        if(!StringUtils.isEmpty(ipAddress))
+        if (!StringUtils.isEmpty(ipAddress))
         {
             UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromHttpUrl(apiUrl).path(ipAddress).queryParam("key", apiKey);
-            HttpEntity<String> entity = new HttpEntity<>();
             ResponseEntity<String> responseEntity = client.getForEntity(uriComponentsBuilder.toUriString(), String.class);
-            if(responseEntity.getStatusCode()== HttpStatus.OK && !StringUtils.isEmpty(responseEntity) && !StringUtils.isEmpty(responseEntity.getBody()))
+            if (responseEntity.getStatusCode() == HttpStatus.OK && !StringUtils.isEmpty(responseEntity) && !StringUtils.isEmpty(responseEntity.getBody()))
             {
                 final JsonParser parser = new JsonParser();
                 final JsonElement response = parser.parse(responseEntity.getBody());
-                if(response.isJsonObject())
+                if (response.isJsonObject())
                 {
                     final JsonObject responseObject = response.getAsJsonObject();
-                    return new GeoJsonPoint(responseObject.get("location.latitude").getAsDouble(), responseObject.get("location.longitude").getAsDouble());
+                    return GeoJsonPoint.builder().x(responseObject.get("location.latitude").getAsDouble()).y(responseObject.get("location.longitude").getAsDouble()).build();
                 }
             }
         }
