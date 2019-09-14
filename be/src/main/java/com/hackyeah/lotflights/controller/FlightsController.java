@@ -1,6 +1,8 @@
 package com.hackyeah.lotflights.controller;
 
+import com.hackyeah.lotflights.model.Airport;
 import com.hackyeah.lotflights.model.AirportAvailable;
+import com.hackyeah.lotflights.model.AirportPosition;
 import com.hackyeah.lotflights.service.FlightsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,11 +20,10 @@ public class FlightsController
     
     @GetMapping("/airport-available")
     @ResponseBody
-    public ResponseEntity<List<AirportAvailable>> getAirports()
+    public ResponseEntity<AirportPosition> getAirports()
     {
 
-        List<AirportAvailable> response =service.getAirportsAvailable();
-        System.out.println(response.get(0).toString());
+        AirportPosition response =service.getAirportsAvailable();
        return   ResponseEntity.ok().body(response);
     }
 }

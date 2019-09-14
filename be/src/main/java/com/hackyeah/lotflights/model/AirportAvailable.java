@@ -3,21 +3,35 @@ package com.hackyeah.lotflights.model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
+
+import java.util.List;
 
 @Getter
 @Setter
 @ToString
 public class AirportAvailable {
 
+    private String country;
+    private List<City> cities;
 
-    private String airportName;
-
-    private GeoJsonPoint geoJsonPoint;
-
-    public AirportAvailable(GeoJsonPoint geoJsonPoint, String airportName) {
-      this.geoJsonPoint=geoJsonPoint;
-      this.airportName=airportName;
+    public AirportAvailable(String country, List<City> cities) {
+        this.country = country;
+        this.cities = cities;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public List<City> getCities() {
+        return cities;
+    }
+
+    public void setCities(List<City> cities) {
+        this.cities = cities;
+    }
 }
