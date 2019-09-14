@@ -19,7 +19,7 @@ public class GeoService
 {
     @Value("${ip-registry.api.key}")
     private String apiKey;
-    @Value("${ip-registry.url}")
+    @Value("${ip-registry.api.url}")
     private String apiUrl;
     
     @Autowired
