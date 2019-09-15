@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Service
 public class SuggestionService
@@ -15,7 +15,7 @@ public class SuggestionService
     @Autowired
     private SuggestionRepo suggestionRepo;
     
-    private Collection<Suggestion> getSuggestionsBasedOnIata(final String iata)
+    public List<Suggestion> getSuggestionsBasedOnIata(final String iata)
     {
         if (!StringUtils.isEmpty(iata))
         {
