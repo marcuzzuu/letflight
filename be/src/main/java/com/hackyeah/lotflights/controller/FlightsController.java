@@ -43,16 +43,16 @@ public class FlightsController
         final GeoJsonPoint ipLocation = this.geoService.getIpLocation(ip);
         if (ipLocation != null)
         {
-            return nearestDepartureAirport(ipLocation);
+            return nearestDepartureAirport(ipLocation.getX(), ipLocation.getY());
         }
         return ResponseEntity.notFound().build();
     }
     
-    @GetMapping(value = "/nearest-departure", params = "location")
+    @GetMapping(value = "/nearest-departure")
     @ResponseBody
-    public ResponseEntity<Airport> nearestDepartureAirport(@RequestParam final GeoJsonPoint location)
+    public ResponseEntity<Airport> nearestDepartureAirport(final Double lat, final Double lon)
     {
-        final Optional<Airport> nearestAirport = this.mapsService.findNearAirport(location);
+        final Optional<Airport> nearestAirport = this.mapsService.findNearAirport(GeoJsonPoint.builder().x(lat).y(lon).build());
         if(nearestAirport.isPresent())
         {
             final Airport airport = nearestAirport.get();
