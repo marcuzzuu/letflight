@@ -1,0 +1,28 @@
+@import '../../../assets/css/colors.scss';
+
+form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    height: 60%;
+    width: 100%;
+}
+
+.container {
+    height: 100%;
+    color: $plain-color;
+    background-color: $solid-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-datepicker-toggle > button > span > svg {
+    color: $plain-color;
+}

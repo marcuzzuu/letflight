@@ -1,0 +1,13 @@
+<div class="mobile-container">
+  <div class="logo"></div>
+  <section class="buttons">
+    <button *ngFor="let option of options" (click)="onOptionSelect(option)">{{option}}</button>
+  </section>
+  <footer></footer>
+</div>
+<div class="desktop-container">
+  <div class="hero-image"></div>
+  <section class="buttons">
+    <button *ngFor="let option of options" (click)="onOptionSelect(option)">{{option}}</button>
+  </section>
+</div>

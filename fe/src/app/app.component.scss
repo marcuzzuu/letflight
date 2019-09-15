@@ -1,0 +1,9 @@
+.container {
+  display: grid;
+  grid-template-rows: 1fr 8fr;
+  height: 100vh;
+}
+
+.router-wrapper {
+  overflow: auto;
+}
