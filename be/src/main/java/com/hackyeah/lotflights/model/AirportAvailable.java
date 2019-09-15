@@ -1,39 +1,18 @@
 package com.hackyeah.lotflights.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Getter
-@Setter
-@ToString
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class AirportAvailable {
-    
+public class AirportAvailable
+{
     private String country;
     private List<City> cities;
-    
-    public AirportAvailable(String country, List<City> cities) {
-        this.country = country;
-        this.cities = cities;
-    }
-    
-    public String getCountry() {
-        return country;
-    }
-    
-    public void setCountry(String country) {
-        this.country = country;
-    }
-    
-    public List<City> getCities() {
-        return cities;
-    }
-    
-    public void setCities(List<City> cities) {
-        this.cities = cities;
-    }
 }
