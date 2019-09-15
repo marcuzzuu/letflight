@@ -28,17 +28,23 @@ public class GeoService
     {
         if (!StringUtils.isEmpty(ipAddress))
         {
-            UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromHttpUrl(apiUrl).path(ipAddress).queryParam("key", apiKey);
-            ResponseEntity<String> responseEntity = client.getForEntity(uriComponentsBuilder.toUriString(), String.class);
-            if (responseEntity.getStatusCode() == HttpStatus.OK && !StringUtils.isEmpty(responseEntity) && !StringUtils.isEmpty(responseEntity.getBody()))
+            try
             {
-                final JsonParser parser = new JsonParser();
-                final JsonElement response = parser.parse(responseEntity.getBody());
-                if (response.isJsonObject())
+                UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromHttpUrl(apiUrl).path(ipAddress).queryParam("key", apiKey);
+                ResponseEntity<String> responseEntity = client.getForEntity(uriComponentsBuilder.toUriString(), String.class);
+                if (responseEntity.getStatusCode() == HttpStatus.OK && !StringUtils.isEmpty(responseEntity) && !StringUtils.isEmpty(responseEntity.getBody()))
                 {
-                    final JsonObject responseLocation = response.getAsJsonObject().getAsJsonObject("location");
-                    return GeoJsonPoint.builder().x(responseLocation.get("latitude").getAsDouble()).y(responseLocation.get("longitude").getAsDouble()).build();
+                    final JsonParser parser = new JsonParser();
+                    final JsonElement response = parser.parse(responseEntity.getBody());
+                    if (response.isJsonObject())
+                    {
+                        final JsonObject responseLocation = response.getAsJsonObject().getAsJsonObject("location");
+                        return GeoJsonPoint.builder().x(responseLocation.get("latitude").getAsDouble()).y(responseLocation.get("longitude").getAsDouble()).build();
+                    }
                 }
+            }catch (Exception e)
+            {
+                e.printStackTrace();
             }
         }
         return null;

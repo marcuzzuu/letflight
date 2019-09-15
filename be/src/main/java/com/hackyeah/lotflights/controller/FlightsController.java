@@ -46,7 +46,7 @@ public class FlightsController
         {
             return nearestDepartureAirport(ipLocation.getX(), ipLocation.getY());
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(this.flightsService.getDefaultAirport());
     }
     
     @GetMapping(value = "/nearest-departure")
