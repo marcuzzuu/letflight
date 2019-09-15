@@ -1,4 +1,4 @@
-# lotflights
+# LOT-Flights
 
 Simple app that tries to simplify the booking process for LOT Airlines.
 
