@@ -9,6 +9,7 @@ import com.hackyeah.lotflights.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/info")
 public class InfoController
 {
@@ -44,10 +46,10 @@ public class InfoController
     @GetMapping(value = "/suggestions")
     public ResponseEntity<List<Suggestion>> suggestionByAirport(final String iata)
     {
-        if(!StringUtils.isEmpty(iata))
+        if (!StringUtils.isEmpty(iata))
         {
             final List<Suggestion> suggestions = this.suggestionService.getSuggestionsBasedOnIata(iata);
-            return suggestions!=null && !suggestions.isEmpty()? ResponseEntity.ok(suggestions) : ResponseEntity.noContent().build();
+            return suggestions != null && !suggestions.isEmpty() ? ResponseEntity.ok(suggestions) : ResponseEntity.noContent().build();
         }
         return ResponseEntity.badRequest().build();
     }

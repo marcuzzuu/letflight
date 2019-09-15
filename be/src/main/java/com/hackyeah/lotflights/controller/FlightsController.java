@@ -8,8 +8,8 @@ import com.hackyeah.lotflights.service.IATAService;
 import com.hackyeah.lotflights.service.MapsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 public class FlightsController
 {
     @Autowired
@@ -53,7 +54,7 @@ public class FlightsController
     public ResponseEntity<Airport> nearestDepartureAirport(final Double lat, final Double lon)
     {
         final Optional<Airport> nearestAirport = this.mapsService.findNearAirport(GeoJsonPoint.builder().x(lat).y(lon).build());
-        if(nearestAirport.isPresent())
+        if (nearestAirport.isPresent())
         {
             final Airport airport = nearestAirport.get();
             airport.setIata(this.iataService.getIataFromGeo(airport.getLocation()));
