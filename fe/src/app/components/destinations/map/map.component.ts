@@ -210,13 +210,13 @@ export class MapComponent implements OnInit {
         return this.backendService.available()
         .pipe(map((x)=>{
           this.locations = x.map((e, index)=>{
-            return {lat: e.location.x, lon: e.location.y, name: e.name}
+            return {lat: e.location.y, lon: e.location.x, name: e.name}
           });
           return this.backendService.departureIp("10.250.194.64")
           .pipe(map(x=>{
             this.departure = {
-              lat: x.location.x,
-              lon: x.location.y,
+              lat: x.location.y,
+              lon: x.location.x,
               name: x.name
             }
             this.subjectService.departureSubject.next(this.departure);
